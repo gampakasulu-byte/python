@@ -1,0 +1,54 @@
+# Examination Result and Grace-Mark Validation
+
+subjects = int(input("Enter number of subjects: "))
+
+total = 0
+grace_limit = 5
+maximum_marks = 100
+failed = 0
+
+for i in range(subjects):
+
+    print("\nSubject:", i + 1)
+
+    marks = int(input("Enter marks: "))
+    pass_marks = 35
+
+    grace = 0
+
+    if marks < pass_marks:
+        required = pass_marks - marks
+
+        if required <= grace_limit:
+            grace = required
+            marks = min(marks + grace, maximum_marks)
+            print("Grace Marks Added:", grace)
+
+        else:
+            failed += 1
+
+    if marks >= pass_marks:
+        print("Result: Pass")
+    else:
+        print("Result: Fail")
+
+    print("Final Marks:", marks)
+
+    total += marks
+
+percentage = (total / (subjects * maximum_marks)) * 100
+
+print("\nTotal Marks:", total)
+print("Percentage:", percentage)
+
+if failed > 0:
+    print("Final Result: Fail")
+elif percentage >= 75:
+    print("Classification: Distinction")
+elif percentage >= 60:
+    print("Classification: First Class")
+elif percentage >= 50:
+    print("Classification: Second Class")
+else:
+    print("Classification: Pass")# Examination Result and Grace-Mark Validation
+
