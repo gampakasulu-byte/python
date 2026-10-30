@@ -1,0 +1,22 @@
+venue = float(input("Enter venue cost: "))
+equipment = float(input("Enter equipment cost: "))
+catering = float(input("Enter catering cost: "))
+transport = float(input("Enter transport cost: "))
+certificates = float(input("Enter certificate cost: "))
+
+sponsorship = float(input("Enter sponsorship amount: "))
+fee = float(input("Enter registration fee per person: "))
+
+total = venue + equipment + catering + transport + certificates
+
+remaining = total - sponsorship
+
+if remaining > 0:
+    participants = int(remaining / fee) + (remaining % fee > 0)
+else:
+    participants = 0
+
+print("Total Event Cost:", total)
+print("Sponsorship:", sponsorship)
+print("Remaining Amount:", max(0, remaining))
+print("Minimum Participants Required:", participants)
