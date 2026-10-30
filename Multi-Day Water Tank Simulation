@@ -1,0 +1,38 @@
+# Multi-Day Water Tank Simulation
+
+capacity = float(input("Enter tank capacity in litres: "))
+initial = float(input("Enter initial water level: "))
+threshold = float(input("Enter required threshold: "))
+days = int(input("Enter number of days: "))
+
+level = initial
+first_interval = -1
+
+for day in range(1, days + 1):
+
+    print("\nDay:", day)
+
+    inflow = float(input("Enter water inflow: "))
+    outflow = float(input("Enter water outflow: "))
+
+    level = level + inflow - outflow
+
+    if level > capacity:
+        print("Overflow Detected!")
+        level = capacity
+
+    elif level < 0:
+        print("Water Shortage Detected!")
+        level = 0
+
+    print("Current Water Level:", level)
+
+    if level >= threshold and first_interval == -1:
+        first_interval = day
+
+if first_interval != -1:
+    print("\nThreshold Reached on Day:", first_interval)
+else:
+    print("\nThreshold Not Reached")
+
+print("Final Water Level:", level)
