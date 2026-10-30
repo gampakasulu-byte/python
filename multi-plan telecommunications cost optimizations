@@ -1,0 +1,17 @@
+usage = int(input("Enter data usage in GB: "))
+
+plans = {
+    "Plan A": (199, 2),
+    "Plan B": (299, 5),
+    "Plan C": (399, 10)
+}
+
+for name, details in plans.items():
+    cost, limit = details
+
+    if usage <= limit:
+        total = cost
+    else:
+        total = cost + (usage - limit) * 50
+
+    print(name, "Total Cost:", total)
