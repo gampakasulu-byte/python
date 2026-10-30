@@ -1,0 +1,48 @@
+# Attendance Recovery Computation
+
+total_classes = int(input("Enter total classes conducted: "))
+attended_classes = int(input("Enter classes attended: "))
+
+threshold = float(input("Enter required attendance percentage: "))
+
+if total_classes <= 0 or attended_classes < 0 or attended_classes > total_classes:
+    print("Invalid attendance details")
+
+else:
+    current = (attended_classes / total_classes) * 100
+
+    print("\nCurrent Attendance:", round(current, 2), "%")
+
+    # Calculate minimum consecutive classes required
+    required = 0
+
+    while ((attended_classes + required) /
+           (total_classes + required)) * 100 < threshold:
+        required += 1
+
+    print("Minimum Classes Required:", required)
+
+    # Different future attendance scenarios
+    scenarios = [5, 10, 20]
+
+    for future in scenarios:
+
+        future_attended = int(input(
+            f"Enter classes attended out of next {future} classes: "
+        ))
+
+        if future_attended < 0 or future_attended > future:
+            print("Invalid scenario")
+            continue
+
+        future_total = total_classes + future
+        future_present = attended_classes + future_attended
+
+        percentage = (future_present / future_total) * 100
+
+        print("Future Attendance:", round(percentage, 2), "%")
+
+        if percentage >= threshold:
+            print("Eligibility: Eligible")
+        else:
+            print("Eligibility: Not Eligible")
