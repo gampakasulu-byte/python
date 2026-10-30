@@ -1,0 +1,37 @@
+# Student Timetable Conflict Detection
+
+timetable = [
+    ("Monday", "09:00", "10:00", "Python", "Room 101"),
+    ("Monday", "10:00", "11:00", "Maths", "Room 102"),
+    ("Tuesday", "09:00", "10:00", "English", "Room 101"),
+    ("Tuesday", "09:30", "10:30", "Web Development", "Room 103")
+]
+
+unavailable_rooms = ["Room 103"]
+
+conflict = False
+
+for i in range(len(timetable)):
+
+    day1, start1, end1, subject1, room1 = timetable[i]
+
+    print("\nCourse:", subject1)
+
+    if room1 in unavailable_rooms:
+        print("Room Unavailable:", room1)
+        conflict = True
+
+    for j in range(i + 1, len(timetable)):
+
+        day2, start2, end2, subject2, room2 = timetable[j]
+
+        if day1 == day2:
+
+            if start1 < end2 and start2 < end1:
+                print("Schedule Conflict:", subject1, "and", subject2)
+                conflict = True
+
+if conflict:
+    print("\nTimetable is Invalid")
+else:
+    print("\nTimetable is Valid")# Student Timetable Conflict Detection
