@@ -1,0 +1,20 @@
+material = float(input("Enter material cost: "))
+labour = float(input("Enter labour cost: "))
+machine = float(input("Enter machine cost: "))
+wastage = float(input("Enter wastage cost: "))
+selling = float(input("Enter selling price: "))
+quantity = int(input("Enter quantity: "))
+
+cost = material + labour + machine + wastage
+revenue = selling * quantity
+
+profit = revenue - cost
+
+print("Total Cost:", cost)
+print("Revenue:", revenue)
+print("Profit:", profit)
+
+if profit > 0:
+    print("Production is Profitable")
+else:
+    print("Production is Not Profitable")
